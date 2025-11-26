@@ -109,3 +109,20 @@ img[alt="justify"] {
     position: relative;
     top: 2px;
 }
+
+.main-container > button {
+    height: 40px;
+
+}
+
+.input-title {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 40px;
+}
+
+.input-title:focus {
+    outline: none;
+}
+
