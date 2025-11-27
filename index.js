@@ -7,17 +7,16 @@ document.addEventListener('click', e => {
   column.classList.add('sub-container');
   column.innerHTML = `
     <div class="closeBtn columnClose"><i class="fa-solid fa-xmark"></i></div>
-    <input class="input-title textInput" type="text" placeholder="Title">
+    <textarea class="input-title textInput" type="text" placeholder="Title"></textarea>
     <button class="addCardBtn"><i class="fa-solid fa-plus"></i></button>
     `
    if (e.target.id === btn.id) {
    main.insertBefore(column, btn)
-  } else if (e.target.classList.contains('addCardBtn')) {
+  } else if (e.target.classList.contains('fa-plus')) {
     column = e.target.closest('.sub-container')
     let taskCont = document.createElement('div');
     taskCont.classList.add('task-container');
     taskCont.innerHTML = `
-
         <div class="tasks">
         <div class="closeBtn"><i class="fa-solid fa-xmark"></i></div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -39,7 +38,7 @@ document.addEventListener('click', e => {
                         </div>`
     column.insertBefore(taskCont, e.target.closest('.addCardBtn'))
   }
-     else if (e.target.classList.contains('fa-solid') && e.target.closest('.columnClose')) {
+     else if (e.target.classList.contains('fa-xmark') && e.target.closest('.columnClose')) {
        e.target.closest('.sub-container').remove()
      }
      else if (e.target.classList.contains('fa-solid') && e.target.closest('.tasks')) {
