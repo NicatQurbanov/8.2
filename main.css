@@ -38,8 +38,9 @@ header p {
     width: 350px;
     background-color: #dcdcdc;
     height: 490px;
-    border-radius: 5px;
-    overflow-y: scroll;
+    border-radius: 10px;
+    overflow-y: auto;
+    position: relative;
 }
 
 .sub-container:last-child {
@@ -64,8 +65,7 @@ header p {
     border-radius: 5px;
     height: 140px;
     background-color: #f5f5f5;
-    
-    
+    position: relative;
 }
 
 .tasks:last-child {
@@ -126,3 +126,43 @@ img[alt="justify"] {
     outline: none;
 }
 
+.closeBtn {
+    position: absolute;
+    right: 0;
+    background-color: lightgray;
+    border: 1px solid gray;
+    border-radius: 10px;
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.closeBtn:hover, .addCardBtn:hover {
+    background-color: darkslategray;
+    border: none;
+}
+
+i {
+    transform: scale(2);
+}
+
+.addCardBtn {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+.addCardBtn:hover i {
+    color: white;
+}
+
+.addCardBtn > i {
+   transform: scale(1);
+}

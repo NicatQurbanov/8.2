@@ -2,21 +2,24 @@
 const btn = document.getElementById('btn');
 const main = document.getElementsByClassName('main-container')[0];
 
-const placeholdersArr = ['To do', 'In Process', 'Fixed', 'Done'];
+document.addEventListener('click', e => {
+  let column = document.createElement('div');
+  column.classList.add('sub-container');
+  column.innerHTML = `
+    <div class="closeBtn columnClose"><i class="fa-solid fa-xmark"></i></div>
+    <input class="input-title textInput" type="text" placeholder="Title">
+    <button class="addCardBtn"><i class="fa-solid fa-plus"></i></button>
+    `
+   if (e.target.id === btn.id) {
+   main.insertBefore(column, btn)
+  } else if (e.target.classList.contains('addCardBtn')) {
+    column = e.target.closest('.sub-container')
+    let taskCont = document.createElement('div');
+    taskCont.classList.add('task-container');
+    taskCont.innerHTML = `
 
-
-btn.addEventListener('click', () => {
-    const column = document.createElement('div');
-    column.classList.add('sub-container');
-    column.innerHTML = `
-    <input id="textInput" class="input-title" type="text" placeholder="${placeholdersArr[0]}">
-    <button id="addCardBtn">Add card</button>`
-    main.insertBefore(column, btn)
-    addCardBtn.addEventListener('click', () => {
-        let taskCont = document.createElement('div');
-        taskCont.classList.add('task-container');
-        taskCont.innerHTML = `
         <div class="tasks">
+        <div class="closeBtn"><i class="fa-solid fa-xmark"></i></div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <div class="icon-container">
                             <div><img src="Icons/justify.png" alt="justify"></div>
@@ -34,11 +37,13 @@ btn.addEventListener('click', () => {
                                 <div class="span-container"><img src="Icons/comments.png" alt="comments"><span>4</span></div></div>
                             <div><img src="Icons/man_1.png" alt="man"></div>
                         </div>`
-    column.insertBefore(taskCont, addCardBtn);
-    })
+    column.insertBefore(taskCont, e.target.closest('.addCardBtn'))
+  }
+     else if (e.target.classList.contains('fa-solid') && e.target.closest('.columnClose')) {
+       e.target.closest('.sub-container').remove()
+     }
+     else if (e.target.classList.contains('fa-solid') && e.target.closest('.tasks')) {
+        e.target.closest('.tasks').remove();     
+     }
 })
- 
-
-
-
 
